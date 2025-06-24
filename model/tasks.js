@@ -4,6 +4,10 @@ const taskSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
+    },
+    Done: {
+        type: Boolean,
+        default: false
     }
 });
 

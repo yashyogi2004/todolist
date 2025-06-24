@@ -89,6 +89,16 @@ app.get('/tasks/delete/:userId/:taskId', isLoggedin, async (req, res) => {
     res.redirect('/dashboard');
 })
 
+app.get('/tasks/done/:userId/:taskId', isLoggedin, async (req, res) => {
+    const userId = req.params.userId;
+    const taskId = req.params.taskId;
+    const user = await userModel.findById(userId);
+    const task = await taskModel.findById(taskId);
+    task.Done = !task.Done;
+    await task.save();
+    res.redirect('/dashboard');
+})
+
 app.get('/logout', (req, res) => {
     res.clearCookie('token');
     res.redirect('/login');
