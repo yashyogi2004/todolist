@@ -106,7 +106,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/login');
 })
 
-app.listen(process.env.port, () => {
+app.listen(process.env.port||3000, () => {
     console.log(`server is running on port ${process.env.port}`);
 })
 
